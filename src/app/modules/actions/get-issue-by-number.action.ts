@@ -23,6 +23,6 @@ export const getIssueByNumber = async (issueNumber: string): Promise<GitHubIssue
       return issues;
 
     } catch (err) {
-      throw "Can't get issue by number";
+      throw `Can't get issue by number ${issueNumber}`;
     }
   }

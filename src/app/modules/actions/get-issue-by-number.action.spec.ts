@@ -36,4 +36,23 @@ describe('getIssueByNumber action', () => {
     expect(issue).toEqual(moskIssue as any);
   });
 
+  it('should not fetch issues by number successfully', async () => {
+    const issueReponse = new Response(
+      null,
+      {
+        status: 404,
+        statusText: 'Not Found',
+      }
+    );
+
+    spyOn(window, 'fetch').and.resolveTo(issueReponse);
+
+    try {
+      await getIssueByNumber(issueNumber);
+      expect(true).toBeFalsy();
+    } catch (err) {
+      expect(err).toBe(`Can't get issue by number ${issueNumber}`);
+    }
+  });
+
 });
