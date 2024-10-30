@@ -24,6 +24,6 @@ export const getIssueCommnetsByNumber = async (issueNumber: string): Promise<Git
       return issues;
 
     } catch (err) {
-      throw "Can't get issue comments by number";
+      throw `Can't get issue comments by number ${issueNumber}`;
     }
   }
