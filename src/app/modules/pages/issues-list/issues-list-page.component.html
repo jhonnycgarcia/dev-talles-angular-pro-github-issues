@@ -14,7 +14,6 @@
 
   <!-- Listado -->
    <div class="mt-4 flex flex-col col-span-2">
-
     @for (issue of issuesQuery.data(); track issue.id) {
       <issue-item [issue]="issue" />
     } @empty {
@@ -26,12 +25,6 @@
       }
 
     }
-
-    <!-- TODO: Listado de issues -->
-
-    <!-- TODO: Spinner -->
-
-    <!-- TODO: Si no hay issues por el filtro -->
    </div>
 
 

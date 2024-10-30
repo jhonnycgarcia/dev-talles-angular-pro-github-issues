@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { injectQuery } from '@tanstack/angular-query-experimental';
+import { injectQuery, injectQueryClient } from '@tanstack/angular-query-experimental';
 import { getIssueByNumber, getIssueCommnetsByNumber } from '../actions';
 
 @Injectable({
@@ -7,22 +7,33 @@ import { getIssueByNumber, getIssueCommnetsByNumber } from '../actions';
 })
 export class IssueService {
 
+  private queryClient = injectQueryClient();
   private issueNumber = signal<string | null>(null)
 
   public issueQuery = injectQuery(() => ({
     enabled: this.issueNumber() != null,
     queryKey: ['issue', this.issueNumber()],
     queryFn: () => getIssueByNumber( this.issueNumber()! ),
+    staleTime: 1000 * 60 * 5,
   }));
 
   public issueCommentsQuery = injectQuery(() => ({
     enabled: this.issueNumber() != null,
     queryKey: ['issue', this.issueNumber(), 'comments'],
     queryFn: () => getIssueCommnetsByNumber( this.issueNumber()! ),
+    staleTime: 1000 * 60 * 5,
   }));
 
   setIssueNumber(issueNumber: string) {
     this.issueNumber.set(issueNumber);
+  }
+
+  prefetchIssue(issueNumber: string) {
+    this.queryClient.prefetchQuery({
+      queryKey: ['issue', issueNumber],
+      queryFn: () => getIssueByNumber(issueNumber),
+      staleTime: 1000 * 60 * 5,
+    });
   }
 
 }
