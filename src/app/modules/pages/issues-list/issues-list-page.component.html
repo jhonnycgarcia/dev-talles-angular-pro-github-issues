@@ -28,6 +28,11 @@
     <div>
       <h2>Labels</h2>
       <!-- TODO: Spinner -->
+       @if (labelsQuery.isLoading()) {
+        <p>Estamos cargando los labels...</p>
+       } @else {
+        <pre>{{labelsQuery.data() | json}}</pre>
+       }
 
       <!-- TODO: Label Selector -->
     </div>
