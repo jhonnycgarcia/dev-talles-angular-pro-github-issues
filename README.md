@@ -31,3 +31,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `https://docs.github.com/es/rest/issues/labels?apiVersion=2022-11-28`
 
 `https://github.com/angular/angular`
+
+`https://gist.github.com/Klerith/5dcaa8a573b3e54cc7421f7964660e39`

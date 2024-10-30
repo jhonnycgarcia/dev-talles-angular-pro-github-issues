@@ -11,7 +11,7 @@ export const getIssues
   await sleep(1000);
   try {
     const resp = await fetch(
-      `${BASE_URL}/labels`,
+      `${BASE_URL}/issues`,
       {
         headers: {
           Authorization: `Bearer ${GITHUB_TOKEN}`,
