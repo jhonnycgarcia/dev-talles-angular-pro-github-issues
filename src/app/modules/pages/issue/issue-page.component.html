@@ -7,5 +7,17 @@
 @if (issueQuery.data() === undefined) {
   <p>Estamos cargando el issue...</p>
 } @else {
-  <app-issue-commet [issue]="issueQuery.data()!" />
+  <issue-commet [issue]="issueQuery.data()!" />
+}
+
+@if (issueCommentsQuery.isLoading()) {
+  <p>Estamos cargando los comentarios...</p>
+} @else {
+
+  @for (comment of issueCommentsQuery.data(); track comment.id) {
+    <issue-commet [issue]="comment" />
+  } @empty {
+    <p>No hay comentarios...</p>
+  }
+
 }

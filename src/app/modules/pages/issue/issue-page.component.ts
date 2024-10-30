@@ -30,4 +30,6 @@ export default class IssuePageComponent {
 
   public issueQuery = this.issueSrv.issueQuery;
 
+  public issueCommentsQuery = this.issueSrv.issueCommentsQuery;
+
 }

@@ -5,7 +5,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { GitHubIssue } from '../../interfaces';
 
 @Component({
-  selector: 'app-issue-commet',
+  selector: 'issue-commet',
   standalone: true,
   imports: [
     CommonModule,
