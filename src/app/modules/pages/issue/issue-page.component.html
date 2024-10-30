@@ -1,1 +1,11 @@
-<h1>Issue number: <small>{{ issueNumber() }}</small></h1>
+<h1>
+  Issue number: <small>{{ issueNumber() }}</small>
+</h1>
+<a routerLink="/issues">Ir a issues</a>
+
+
+@if (issueQuery.data() === undefined) {
+  <p>Estamos cargando el issue...</p>
+} @else {
+  <app-issue-commet [issue]="issueQuery.data()!" />
+}
