@@ -28,7 +28,8 @@ export class IssueItemComponent {
   }
 
   prefetchData() {
-    this.issueSrv.prefetchIssue(this.issue().number.toString());
+    // this.issueSrv.prefetchIssue(this.issue().number.toString());
+    this.issueSrv.setIssueData(this.issue());
   }
 
 }
