@@ -50,5 +50,25 @@ describe('IssuesService', () => {
     });
   });
 
+  it('should set selected labels', async () => {
+    const label = 'Accessibility';
+    service.toggleLabel(label);
+    expect(service.selectedLabels().has(label)).toBeTruthy();
+
+    service.toggleLabel(label);
+    expect(service.selectedLabels().has(label)).toBeFalsy();
+  });
+
+  it('should set selected labels and get issues by label', async () => {
+    const label = 'Accessibility';
+    service.toggleLabel(label);
+    expect(service.selectedLabels().has(label)).toBeTruthy();
+
+    const { data } = await service.issuesQuery.refetch();
+    data?.forEach(issue => {
+      expect(issue.labels.some(raw => raw.name === label)).toBeTruthy();
+    });
+  });
+
 
 });
